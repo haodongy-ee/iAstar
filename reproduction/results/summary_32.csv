@@ -1,0 +1,4 @@
+method,success_rate_percent,mean_path_length,mean_expanded_nodes,mean_runtime_ms
+A*,100.0,34.084,70.99,13.975
+Neural A*,100.0,37.267,60.76,13.999
+iA* (quick-trained),100.0,34.360,55.79,20.334

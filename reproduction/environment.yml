@@ -1,0 +1,16 @@
+name: iastar-repro
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - numpy==1.26.4
+      - pyyaml
+      - opencv-python
+      - pandas
+      - matplotlib
+      - scipy
+      - scikit-image
+      - pqdict
+      - segmentation-models-pytorch
