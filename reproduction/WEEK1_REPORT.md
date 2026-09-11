@@ -8,7 +8,7 @@ Paper: **iA*: Imperative Learning-based A* Search for Path Planning** (Chen, Yan
 - Neural A* repository commit: `473edbbd7d20df3e2440b55989f87e720be2d06e`
 - Dataset: official MP `mazes_032_moore_c8.npz`, test split, 100 maps
 - Fixed test seed: `2026`
-- Local verification platform: Python 3.12.14, PyTorch 2.14.0 CPU, NumPy 1.26.4
+- Local verification platform: Python 3.10, PyTorch 2.14.0 CPU, NumPy 1.26.4
 - Recommended Windows environment: separate Conda environment `iastar-repro`, Python 3.10
 
 The official iA* Google Drive checkpoint was downloaded but is currently corrupted: `torch.load` raises `PytorchStreamReader failed reading zip archive: failed finding central directory`. This is independently reported in the repository's open Issue #2. Consequently, this pilot uses a quick iA* model trained for 5 epochs on 100 official 32×32 training instances. The iA* numbers below are a smoke-test result, **not** a reproduction of the paper's final numbers.
