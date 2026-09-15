@@ -133,6 +133,19 @@ python benchmark.py --sizes 064  # single size
 python benchmark.py --skip-na    # without the Neural A* baseline
 ```
 
+### Controlled multi-seed reproduction
+
+The Week 2 protocol trains three independent iA* seeds, evaluates them on the
+same materialized test cases, uses warm-up/repeated timing with rotating planner
+order, and reports run-level bootstrap confidence intervals:
+
+```bash
+python reproduction/run_multiseed_32.py
+```
+
+See [`reproduction/WEEK2_PROTOCOL.md`](reproduction/WEEK2_PROTOCOL.md) for the
+full protocol, a fast smoke-test command, output files, and interpretation limits.
+
 ### Example
 
 [`example/example.ipynb`](example/example.ipynb) renders side-by-side visualizations of the
