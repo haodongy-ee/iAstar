@@ -16,7 +16,7 @@ def run(command: list[str]) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--seeds", nargs="+", type=int, default=[1234, 2026, 3407])
-    parser.add_argument("--epochs", type=int, default=50)
+    parser.add_argument("--epochs", type=int, default=20)
     parser.add_argument("--train-samples", type=int, default=800)
     parser.add_argument("--batch-size", type=int, default=100)
     parser.add_argument("--eval-samples", type=int, default=100)
