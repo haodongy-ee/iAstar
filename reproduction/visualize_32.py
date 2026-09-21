@@ -63,7 +63,7 @@ def main() -> None:
         outputs = {
             "Vanilla A*": vanilla(maps, start, goal, maps),
             "Neural A*": neural(maps, start, goal),
-            "iA* (quick-trained)": imperative(maps, start, goal),
+            "iA* (locally trained)": imperative(maps, start, goal),
         }
 
     colors = ListedColormap(["#151515", "#f5f5f5", "#75c893", "#e84a5f", "#2878b5", "#f5a623"])

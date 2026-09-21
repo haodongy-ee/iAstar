@@ -31,6 +31,37 @@ Extensive experiments demonstrate that iA\* outperforms both classical and super
   <img src="figures/framework.jpg" alt="iA* bilevel optimization framework" width="600" />
 </p>
 
+## Reproduction status
+
+This fork contains a **completed partial reproduction** of iA* on the official
+32x32 MP maze dataset. It is not a claim that all results in the paper have been
+reproduced.
+
+Three locally trained iA* models (seeds `1234`, `2026`, and `3407`; 20 epochs;
+800 training maps each) were evaluated on the same 100 test cases. Values below
+are mean ± sample standard deviation across the three runs:
+
+| Method | Success | Path length | Expanded nodes | Median CPU runtime (ms) |
+| --- | ---: | ---: | ---: | ---: |
+| Vanilla A* | 100.0 ± 0.0% | 34.084 ± 0.000 | 70.99 ± 0.00 | 8.568 ± 0.247 |
+| Neural A* | 100.0 ± 0.0% | 37.267 ± 0.000 | 60.76 ± 0.00 | 12.232 ± 0.414 |
+| iA* (20 epochs) | 100.0 ± 0.0% | 34.391 ± 0.062 | 55.78 ± 1.25 | 19.269 ± 0.386 |
+
+Relative to Vanilla A*, iA* reduced expanded nodes by **21.43%** while
+increasing path length by **0.90%**. It was **124.93% slower** by median CPU
+latency, so this reproduction supports a search-efficiency improvement but not
+a runtime-speedup claim on this platform.
+
+The official pretrained iA* checkpoint remains unloadable because the released
+archive is corrupted (see upstream
+[`Issue #2`](https://github.com/sair-lab/iAstar/issues/2)). The study therefore
+uses locally trained checkpoints. Environment: Windows, Python 3.10.21,
+PyTorch 2.14.0 CPU, NumPy 1.26.4.
+
+See [`reproduction/FINAL_REPORT.md`](reproduction/FINAL_REPORT.md) for the full
+protocol, per-seed results, confidence intervals, artifacts, and limitations.
+The reproduction is complete and no further iA* experiments are planned.
+
 The self-supervised imperative loss pulls the differentiable **search history** toward the planner's **own found path** — no ground-truth optimal paths are needed:
 
 ```text

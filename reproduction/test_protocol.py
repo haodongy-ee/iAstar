@@ -5,7 +5,7 @@ import unittest
 import numpy as np
 import pandas as pd
 
-from summarize_32 import bootstrap_ci, summarize
+from summarize_32 import aggregate_runs, bootstrap_ci, summarize
 
 
 class SummaryTests(unittest.TestCase):
@@ -27,9 +27,11 @@ class SummaryTests(unittest.TestCase):
                             "path_length": 10.0,
                             "expanded_nodes": nodes,
                             "runtime_ms": 2.0,
+                            "runtime_p95_ms": 3.0,
                         }
                     )
-        summary, comparisons = summarize(pd.DataFrame(rows), draws=500, seed=9)
+        runs, summary, comparisons = summarize(pd.DataFrame(rows), draws=500, seed=9)
+        self.assertEqual(len(runs), 6)
         self.assertEqual(set(summary["method"]), {"A*", "iA*"})
         expanded = comparisons[(comparisons["method"] == "iA*") & (comparisons["metric"] == "expanded_nodes")].iloc[0]
         self.assertLess(expanded["relative_change_percent"], 0)
@@ -37,7 +39,7 @@ class SummaryTests(unittest.TestCase):
 
     def test_missing_columns_are_rejected(self) -> None:
         with self.assertRaisesRegex(ValueError, "missing columns"):
-            summarize(pd.DataFrame({"method": ["A*"]}), draws=10)
+            aggregate_runs(pd.DataFrame({"method": ["A*"]}))
 
 
 if __name__ == "__main__":

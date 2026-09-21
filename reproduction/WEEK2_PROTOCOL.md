@@ -1,7 +1,7 @@
 # iA* Week 2: controlled multi-seed protocol
 
-Current dated status and the exam pause are recorded in
-[`STATUS_2026-09-21.md`](STATUS_2026-09-21.md).
+**Completed 2026-09-21.** The final results and limitations are recorded in
+[`FINAL_REPORT.md`](FINAL_REPORT.md); the project is now closed.
 
 Week 1 established that the code, dataset, local training, three planners, and visualization pipeline work. Week 2 changes the experiment from a single pilot run into a controlled multi-seed study.
 
@@ -12,7 +12,8 @@ Week 1 established that the code, dataset, local training, three planners, and v
 - Evaluate every checkpoint on the same 100 materialized test cases and the same sampled starts (`eval_seed=2026`).
 - Warm up each planner before timing, time each planner five times per case, synchronize CUDA around every measurement, and report median and P95 latency.
 - Rotate planner execution order by case to reduce systematic cache and order bias.
-- Report per-training-run means, standard deviation, and a run-level 95% bootstrap confidence interval.
+- Report per-training-run means for success/path/nodes, median and P95 latency,
+  standard deviation across training runs, and a run-level 95% bootstrap confidence interval.
 - Compare learned planners with A* using paired relative changes for path length, expanded nodes, and runtime.
 
 ## Run
